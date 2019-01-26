@@ -3,7 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="5024d022-90ee-4409-9b86-d441a680f467" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/FitApp/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/FitApp/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FitApp/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/FitApp/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FitCommunity/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/FitCommunity/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -16,8 +17,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/FitCommunity/settings.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="174">
-              <caret line="59" column="20" lean-forward="true" selection-start-line="59" selection-start-column="20" selection-end-line="59" selection-end-column="20" />
+            <state relative-caret-position="1669">
+              <caret line="140" column="43" lean-forward="true" selection-start-line="140" selection-start-column="43" selection-end-line="140" selection-end-column="43" />
             </state>
           </provider>
         </entry>
@@ -25,10 +26,10 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/FitApp/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="557">
-              <caret line="50" column="28" lean-forward="true" selection-start-line="50" selection-start-column="28" selection-end-line="50" selection-end-column="28" />
+            <state relative-caret-position="561">
+              <caret line="68" column="129" selection-start-line="68" selection-start-column="129" selection-end-line="68" selection-end-column="129" />
               <folding>
-                <element signature="e#0#15#0" expanded="true" />
+                <element signature="e#0#29#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -67,8 +68,8 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/FitCommunity/urls.py" />
-        <option value="$PROJECT_DIR$/FitCommunity/settings.py" />
         <option value="$PROJECT_DIR$/FitApp/urls.py" />
+        <option value="$PROJECT_DIR$/FitCommunity/settings.py" />
         <option value="$PROJECT_DIR$/FitApp/models.py" />
       </list>
     </option>
@@ -162,15 +163,15 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1548529404331</updated>
-      <workItem from="1548529406900" duration="3499000" />
+      <workItem from="1548529406900" duration="7853000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="3499000" />
+    <option name="totallyTimeSpent" value="7853000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1440" height="798" extended-state="6" />
+    <frame x="0" y="24" width="1440" height="798" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Favorites" side_tool="true" />
@@ -210,13 +211,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/FitCommunity/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="174">
-          <caret line="59" column="20" lean-forward="true" selection-start-line="59" selection-start-column="20" selection-end-line="59" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/FitApp/urls.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
@@ -230,12 +224,19 @@
     <entry file="file://$PROJECT_DIR$/FitApp/views.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/FitCommunity/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1669">
+          <caret line="140" column="43" lean-forward="true" selection-start-line="140" selection-start-column="43" selection-end-line="140" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/FitApp/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="557">
-          <caret line="50" column="28" lean-forward="true" selection-start-line="50" selection-start-column="28" selection-end-line="50" selection-end-column="28" />
+        <state relative-caret-position="561">
+          <caret line="68" column="129" selection-start-line="68" selection-start-column="129" selection-end-line="68" selection-end-column="129" />
           <folding>
-            <element signature="e#0#15#0" expanded="true" />
+            <element signature="e#0#29#0" expanded="true" />
           </folding>
         </state>
       </provider>

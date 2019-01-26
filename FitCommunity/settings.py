@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'FitApp',
+    'Pillow-5.4.1.dist-info',
+    'places',
 ]
 
 MIDDLEWARE = [
@@ -126,3 +128,14 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+MEDIA_URL = '/media/'
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+# Google Places API
+
+PLACES_MAPS_API_KEY='AIzaSyCIuxyveCu5-tXxLehQhQ_nE6uEjA0BXDw'
+PLACES_MAP_WIDGET_HEIGHT=480
+PLACES_MAP_OPTIONS='{"center": { "lat": 38.971584, "lng": -95.235072 }, "zoom": 10}'
+PLACES_MARKER_OPTIONS='{"draggable": true}'

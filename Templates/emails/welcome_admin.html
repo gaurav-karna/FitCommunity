@@ -1,0 +1,14 @@
+{%  extends 'emails/email_base.html' %}
+
+{% block content %}
+    <h2>Hello, {{ user.first_name }}! Thank you for registering for DeltaFit!</h2>
+
+    <p>
+        We are excited you are taking an active role in getting involved in your community. You must be approved by the
+        system administrators before you can register for events and approve other members.
+    </p>
+
+    <p>
+        We hope that you enjoy our services, and look forward to your better future self!
+    </p>
+{% endblock %}

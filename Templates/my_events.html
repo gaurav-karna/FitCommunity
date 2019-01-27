@@ -1,0 +1,52 @@
+{% extends 'home.html' %}
+
+{% block title %}
+<title>Member Home | DeltaFit</title>
+{% endblock %}
+
+{% block content %}
+    {% load static %}
+
+    <div id="container">
+        <div id="navbar">
+            <ul>
+                <a style="width: 220px; background: url({% static 'deltafit_full.png' %})" href="{% url 'welcome_member' %}">
+                    <input style="align-content: center; font-stretch: ultra-expanded; font-size: 40px" type="button" class="logo_button"/>
+                </a>
+                <li style="float: right;"><a href="{% url 'logout' %}">
+                    <input type="button" class="std_button" value="Logout"/>
+                </a></li>
+                <li style="float: right;"><a href="{% url 'my_events' %}">
+                    <input type="button" class="std_button" value="My Events"/>
+                </a></li>
+                <li style="float: right;"><a href="{% url 'view_profile' %}">
+                    <input type="button" class="std_button" value="My Profile"/>
+                </a></li>
+            </ul>
+        </div>
+
+        <div id="about">
+            <h1>My Events</h1>
+            <div id="thin_line"></div>
+            <table>
+            <tr>
+                <th>Title</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+                <th>Location</th>
+                <th>Delete</th>
+            </tr>
+                {% for query in qs %}
+                    <tr>
+                        <td> {{ query.Event.Title }} </td>
+                        <td> {{ query.Event.Start_Date }} </td>
+                        <td> {{ query.Event.End_Date }} </td>
+                        <td> {{ query.Event.Location }} </td>
+                        <td><a href="{% url 'admin_delete_confirm' query.Event.id %}"><input type="button" class="table_button" value="Delete"/></a></td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+
+{% endblock %}

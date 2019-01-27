@@ -24,7 +24,17 @@
                 </a></li>
             </ul>
         </div>
+
+        <div id="basic_form">
+            <h1 align="center">DeltaFit - New Member Signup Form</h1>
+            <h3 align="center">Please complete the fields below. </h3>
+            <h3 align="center" style="color: red;">{{ custom_message }}</h3>
+            <form method='POST'> {% csrf_token %}
+                {{ event_form.as_p }}
+                <button type="submit" class="std_button">Submit</button>
+            </form>
+        </div>
     </div>
 
-    
+
 {% endblock %}

@@ -5,8 +5,6 @@ from django.core.validators import EmailValidator, MinValueValidator, MaxValueVa
 from django.db import transaction
 from django.conf import settings
 
-from places.fields import PlacesField
-
 from django.contrib.auth.models import AbstractUser, BaseUserManager
 
 from django.contrib.auth.models import User
@@ -48,8 +46,29 @@ genders = (
 
 ### Method to return path for image upload per user
 
-def user_directory_path(instance, filename):
-    return 'user_{0}/{1}'.format(instance.user.id, filename)
+# def user_directory_path(instance, filename):
+#     return 'user_{0}/{1}'.format(instance.user.id, filename)
+
+class Community (models.Model):
+    class Meta:
+        verbose_name_plural = 'Communities'
+
+    # Location = PlacesField()
+    # Access details of the location from commands on: https://github.com/oscarmcm/django-places
+    # Django-Places was not authenticating due to lack of updates
+
+    Location = models.CharField(max_length=64, verbose_name='Please enter the city and province/state')
+
+    Zip_Code = models.CharField(max_length=6, unique=True, verbose_name='Please enter a 5 digit US, or 6 character Canadian Zip Code')
+
+    Required_Email = models.CharField(max_length=64, unique=True, null=True, blank=True, verbose_name='Is there a specific email address you would'
+                                                                                           ' like your members to have? (format like @example.tld')
+
+    # Administrators would have a Foreign Key to this class, since there can be many admins to one community, but only
+    # one community per admin
+
+    def __str__(self):
+        return str(self.id)
 
 class Event(models.Model):
     class Meta:
@@ -57,15 +76,15 @@ class Event(models.Model):
 
     Created_At = models.DateTimeField(auto_now=False, auto_now_add=True, editable=False)
 
-    File_Path = models.CharField(max_length=256, default=user_directory_path)
+    # File_Path = models.CharField(max_length=256, default=user_directory_path)
 
     Title = models.CharField(max_length=32)
 
     Short_Description = models.TextField(max_length=500, verbose_name='Add a short (< 500 characters) description of your event')
 
-    Location = PlacesField(verbose_name='Enter a location for your event.')
+    # Event_Picture = models.ImageField(upload_to=user_directory_path)
 
-    Event_Picture = models.ImageField(upload_to=user_directory_path)
+    Community = models.ForeignKey(Community, on_delete=models.CASCADE, null=False)
 
     Start_Date = models.DateTimeField()
 
@@ -82,7 +101,7 @@ class Event(models.Model):
 
     Category = models.CharField(choices=categories, max_length=24)
 
-    Event_Details = models.TextField(max_length=2000, verbose_name='(Optional) Please keep this to under 2000 characters.', blank=True)
+    Event_Details = models.TextField(max_length=2000, verbose_name='(Optional) Event Details - Please keep this to under 2000 characters.', blank=True)
 
     # The 'comments_set' queryset will return each of the comments of an event. At the bottom of the event page, and at the top via
     # a button, a comment form will be rendered so that people can add to the discussion.
@@ -110,20 +129,6 @@ def check_registration(event):
     else:
         return True
 
-class Community (models.Model):
-    class Meta:
-        verbose_name_plural = 'Communities'
-    Location = PlacesField(unique=True)
-    # Access details of the location from commands on: https://github.com/oscarmcm/django-places
-
-    Required_Email = models.CharField(max_length=64, unique=True, null=True, blank=True, verbose_name='Is there a specific email address you would'
-                                                                                           ' like your members to have? (format like @example.tld')
-
-    # Administrators would have a Foreign Key to this class, since there can be many admins to one community, but only
-    # one community per admin
-
-    def __str__(self):
-        return str(self.id)
 
 class CommunityAdmin (models.Model):
     class Meta:
@@ -131,12 +136,18 @@ class CommunityAdmin (models.Model):
 
     user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='admin_profile')
 
+    Age = models.SmallIntegerField(default=12, validators=[
+        MinValueValidator(12, message="You have to be at least 12 years old to use FitCommunity."),
+        MaxValueValidator(120, message="You cannot use FitCommunity if you are over 120 years old.")
+    ])
+
     # Form for editing community will be INACCESSIBLE to Admins, and only editable by the SuperAdmin
     Community = models.ForeignKey(Community, on_delete=models.SET_NULL, null=True)
 
     # backend-attribute
-    is_approved = models.BooleanField(default=False)
+    # is_approved = models.BooleanField(default=False)
 
+    is_admin = models.BooleanField(default=True)
 class Member (models.Model):
     class Meta:
         verbose_name_plural = 'Members'
@@ -165,7 +176,7 @@ class Member (models.Model):
         MaxValueValidator(300, message="Maximum height is 300 cm")
     ])
 
-    BMI = models.SmallIntegerField(verbose_name='Body Mass Index')
+    BMI = models.SmallIntegerField(verbose_name='Body Mass Index', null=True)
 
     Ethnicity = models.CharField(max_length=32, choices=ethnicities)
 
@@ -179,6 +190,8 @@ class Member (models.Model):
 
     # Community admin must approve the applicant
     is_approved = models.BooleanField(default=False)
+
+    is_admin = models.BooleanField(default=False)
     # Max number of registered events is 3
     event_limit = 3
 

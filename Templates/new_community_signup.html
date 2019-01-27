@@ -34,11 +34,11 @@
         <div id="basic_form">
             <h1 align="center">DeltaFit - New Community Request Form</h1>
             <h3 align="center">Please complete the fields below. </h3>
-            <form method='POST'> {% csrf_token %}
+            <form method="POST"> {% csrf_token %}
                 {{ user_form.as_p }}
+                {{ admin_form.as_p }}
                 {{ comm_form.as_p }}
                 <button type="submit" class="std_button">Submit</button>
-                {{ comm_form.media }}
             </form>
         </div>
     </div>

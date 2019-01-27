@@ -45,26 +45,29 @@ class MemberSignupForm(forms.ModelForm):
             'Bio',
             'Age',
             'Gender',
+            'Community',
             'Weight',
             'Height',
             'Ethnicity',
             'Known_Conditions'
         ]
 
-# class CommunityAdminForm(forms.ModelForm):
-#     class Meta:
-#         model = CommunityAdmin
-#         fields = [
-#             'Community'
-#         ]
+class CommunityAdminForm(forms.ModelForm):
+    class Meta:
+        model = CommunityAdmin
+        fields = [
+            'Age'
+        ]
 
 class CommunityForm (forms.ModelForm):
     class Meta:
         model = Community
         fields = [
             'Required_Email',
-            'Location'
+            'Location',
+            'Zip_Code'
         ]
+
 
 class EventForm (forms.ModelForm):
     class Meta:
@@ -76,8 +79,6 @@ class EventForm (forms.ModelForm):
             'Category',
             'Registration_Deadline',
             'Short_Description',
-            'Location',
-            'Event_Picture',
             'Max_Registration',
             'Registration_Open',
             'Event_Details'

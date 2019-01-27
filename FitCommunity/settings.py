@@ -37,8 +37,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'FitApp',
-    'PIL',
-    'places',
 ]
 
 MIDDLEWARE = [
@@ -86,7 +84,7 @@ DATABASES = {
 
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'fit_community_dev',
+        'NAME': 'fit_community_dev_2',
         'USER': 'test',
         'PASSWORD': 'test',
         'HOST': '127.0.0.1',
@@ -120,6 +118,7 @@ EMAIL_HOST_PASSWORD = 'z0nt!3894hackm3!'
 EMAIL_FROM = 'fitcommunity2@gmail.com'
 DEFAULT_FROM_EMAIL = 'fitcommunity2@gmail.com'
 EMAIL_USE_TLS = True
+EMAIL_USE_SSL = True
 EMAIL_PORT = 587
 EMAIL_TIMEOUT = 30
 

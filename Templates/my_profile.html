@@ -1,0 +1,35 @@
+{% extends 'home.html' %}
+
+{% block title %}
+<title>Member Home | DeltaFit</title>
+{% endblock %}
+
+{% block content %}
+    {% load static %}
+
+    <div id="container">
+        <div id="navbar">
+            <ul>
+                <a style="width: 220px; background: url({% static 'deltafit_full.png' %})" href="{% url 'welcome_member' %}">
+                    <input style="align-content: center; font-stretch: ultra-expanded; font-size: 40px" type="button" class="logo_button"/>
+                </a>
+                <li style="float: right;"><a href="{% url 'logout' %}">
+                    <input type="button" class="std_button" value="Logout"/>
+                </a></li>
+                <li style="float: right;"><a href="{% url 'my_events' %}">
+                    <input type="button" class="std_button" value="My Events"/>
+                </a></li>
+                <li style="float: right;"><a href="{% url 'view_profile' %}">
+                    <input type="button" class="std_button" value="My Profile"/>
+                </a></li>
+            </ul>
+        </div>
+
+        <div id="basic_form">
+            <form method="POST"> {% csrf_token %}
+                {{ m_form.as_p }}
+                <button type="submit" class="std_button">Submit</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}

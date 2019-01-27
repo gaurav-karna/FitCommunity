@@ -246,6 +246,10 @@ textarea {
     text-decoration: none;
 }
 
+#basic_form .std_button:hover {
+    background-color: midnightblue;
+}
+
 .tile_button {
     width: 75px;
     height: 75px;

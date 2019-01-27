@@ -42,8 +42,11 @@
                         <td>{{ item.Start_Date }}</td>
                         <td>{{ item.End_Date }}</td>
                         <td>{{ item.Registration_Open }}</td>
-                        <td><a href="{% url 'admin_view_event' item.id %}"><input type="button" class="table_button" value="View"/></a></td>
-                        <td><a href="{% url 'admin_delete_confirm' item.id %}"><input type="button" class="table_button" value="Delete"/></a></td>
+                        {% if user.admin_profile %}
+                            <td><a href="{% url 'admin_view_event' item.id %}"><input type="button" class="table_button" value="View"/></a></td>
+                            <td><a href="{% url 'admin_delete_confirm' item.id %}"><input type="button" class="table_button" value="Delete"/></a></td>
+                        {% endif %}
+
                     </tr>
                 </table>
 

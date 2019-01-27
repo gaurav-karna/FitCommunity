@@ -109,7 +109,7 @@ class Community (models.Model):
     # Access details of the location from commands on: https://github.com/oscarmcm/django-places
 
     Required_Email = models.CharField(max_length=64, unique=True, null=True, blank=True, verbose_name='Is there a specific email address you would'
-                                                                                           'like your members to have?')
+                                                                                           ' like your members to have? (format like @example.tld')
 
     # Administrators would have a Foreign Key to this class, since there can be many admins to one community, but only
     # one community per admin
@@ -120,6 +120,9 @@ class CommunityAdmin (models.Model):
 
     # Form for editing community will be INACCESSIBLE to Admins, and only editable by the SuperAdmin
     Community = models.ForeignKey(Community, on_delete=models.SET_NULL, null=True)
+
+    # backend-attribute
+    is_approved = models.BooleanField(default=False)
 
 class Member (models.Model):
 
@@ -169,6 +172,8 @@ class Registrations (models.Model):
 
     Member = models.ForeignKey(Member, on_delete=models.CASCADE, verbose_name='Member', null=False)
     Event = models.ForeignKey(Event, on_delete=models.CASCADE, verbose_name='Event', null=False)
+
+
 
 
 

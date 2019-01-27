@@ -51,9 +51,21 @@ class MemberSignupForm(forms.ModelForm):
             'Known_Conditions'
         ]
 
-class CommunityAdminForm(forms.ModelForm):
+# class CommunityAdminForm(forms.ModelForm):
+#     class Meta:
+#         model = CommunityAdmin
+#         fields = [
+#             'Community'
+#         ]
+
+class CommunityForm (forms.ModelForm):
     class Meta:
-        model = CommunityAdmin
+        model = Community
         fields = [
-            'Community'
+            'Required_Email',
+            'Location'
         ]
+
+class EventForm (forms.ModelForm):
+    class Meta:
+        pass

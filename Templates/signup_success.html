@@ -1,13 +1,8 @@
 {% extends 'home.html' %}
 
-{% block title %}
-    <title>New Member | DeltaFit</title>
-{% endblock %}
-
 {% block content %}
     {% load static %}
     <div id="container">
-
         <div id="navbar">
             <ul>
                 <a style="width: 220px; background: url({% static 'deltafit_full.png' %})" href="{% url 'index' %}">
@@ -31,20 +26,11 @@
             </ul>
         </div>
 
-        <div id="basic_form">
-            <h1 align="center">DeltaFit - New Member Signup Form</h1>
-            <h3 align="center">Please complete the fields below. </h3>
-            <form method='POST'> {% csrf_token %}
-                {{ user_form.as_p }}
-                {{ m_form.as_p }}
-                <button type="submit" class="std_button">Submit</button>
-            </form>
+        <div id="member_success">
+            <h1>Hey, {{ user.first_name }}! Thank you for signing up for DeltaFit!</h1>
+            <div id="thin_line"></div>
+            <p>We hope you like the service, and you will receive a confirmation email soon, at {{ user.email }}</p>
         </div>
     </div>
 
-
 {% endblock %}
-
-
-
-

@@ -1,7 +1,7 @@
 {% extends 'home.html' %}
 
 {% block title %}
-    <title>New Member | DeltaFit</title>
+    <title>New Community | DeltaFit</title>
 {% endblock %}
 
 {% block content %}
@@ -32,19 +32,16 @@
         </div>
 
         <div id="basic_form">
-            <h1 align="center">DeltaFit - New Member Signup Form</h1>
+            <h1 align="center">DeltaFit - New Community Request Form</h1>
             <h3 align="center">Please complete the fields below. </h3>
             <form method='POST'> {% csrf_token %}
                 {{ user_form.as_p }}
-                {{ m_form.as_p }}
+                {{ comm_form.as_p }}
                 <button type="submit" class="std_button">Submit</button>
+                {{ comm_form.media }}
             </form>
         </div>
     </div>
 
 
 {% endblock %}
-
-
-
-

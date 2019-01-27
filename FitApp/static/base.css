@@ -1,3 +1,15 @@
+body {
+    font-family: Montserrat, sans-serif;
+    background-color: #272728;
+    overflow: auto;
+}
+
+textarea {
+    resize: none;
+    border: 2px solid #78143a;
+    height: 75px;
+}
+
 #navbar {
     position:fixed;
     background-color: #78143a;
@@ -5,46 +17,231 @@
     left:0;
     width: 100vw;
     margin: 0 auto;
-    padding: 0px;
-    height:48px;
+    padding-top: 0px;
+    padding-left: 0;
+    padding-right: 0;
+    padding-bottom: 0;
+    height: 55px;
     color: whitesmoke;
 }
 
 #navbar ul {
     list-style-type: none;
     margin: 0;
-    padding: 0;
+    padding-top: 0px;
+    padding-left: 0;
+    padding-right: 0;
+    padding-bottom: 0;
+    height: 55px;
     overflow: hidden;
     background-color: #78143a;
 }
 
 #navbar li a {
-    float: left;
-    display: block;
-    text-align: center;
-    text-decoration: none;
-}
-
-#navbar a {
     float: right;
     display: block;
     text-align: center;
     text-decoration: none;
 }
 
-
-#navbar .std_button {
+#navbar a .std_button {
     background-color: #78143a;
     color: white;
-    font-family: Raleway, Arial, sans-serif;
-    font-size: 15px;
-    width: 120px;
-    height: 48px;
+    border-left: none;
+    border-bottom: 0;
+    border-top: none;
+    font-family: Montserrat, sans-serif;
+    font-size: 18px;
+    width: 220px;
+    height: 65px;
     cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+}
+
+.logo_button {
+    background: url("deltafit_full.png") no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-color: #78143a;
+    color: white;
+    border-left: none;
+    border-bottom: 0;
+    border-top: none;
+    font-family: Montserrat, sans-serif;
+    font-size: 18px;
+    width: 220px;
+    height: 65px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+}
+
+#navbar li a .std_button {
+    background-color: #78143a;
+    color: white;
+    border-left: none;
+    border-bottom: 0;
+    border-top: none;
+    font-family: Montserrat, sans-serif;
+    font-size: 18px;
+    width: 120px;
+    height: 65px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
 }
 
 #navbar .std_button:hover{
-    /*background-color: #606a70;*/
     background-color: midnightblue;
+}
+
+#thin_line {
+    border-bottom: 1px solid lightgrey;
+    width: 100%;
+    padding-right: 0;
+}
+
+#about {
     color: white;
+    padding-top: 75px;
+    padding-left: 25px;
+    padding-right: 65px;
+    padding-bottom: 10px;
+    line-height: 135%;
+    letter-spacing: 1px;
+}
+
+#signup {
+    color: white;
+    padding-top: 10px;
+    padding-left: 25px;
+    padding-right: 65px;
+    padding-bottom: 10px;
+    line-height: 135%;
+    letter-spacing: 1px;
+}
+
+#member_space {
+    width: 40%;
+    text-align: center;
+    padding-top: 10px;
+    float: left;
+    color: white;
+    padding-left: 50px;
+}
+
+#admin_space {
+    width: 40%;
+    text-align: center;
+    padding-top: 10px;
+    float: right;
+    color: white;
+    padding-right: 60px;
+}
+
+#member_space .std_button {
+    background-color: #78143a;
+    color: white;
+    border-left: none;
+    border-bottom: 0;
+    border-top: none;
+    border-right: 0;
+    font-family: Montserrat, sans-serif;
+    font-size: 18px;
+    width: 220px;
+    height: 40px;
+    border-radius: 18px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+}
+
+#member_space .std_button:hover {
+    background-color: midnightblue;
+}
+
+#admin_space .std_button {
+    background-color: #78143a;
+    color: white;
+    border-left: none;
+    border-bottom: 0;
+    border-top: none;
+    border-right: 0;
+    font-family: Montserrat, sans-serif;
+    font-size: 18px;
+    width: 220px;
+    height: 40px;
+    border-radius: 18px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+}
+
+#admin_space .std_button:hover {
+    background-color: midnightblue;
+}
+
+#member_success {
+    color: white;
+    padding-top: 75px;
+    padding-left: 25px;
+    padding-right: 175px;
+    padding-bottom: 10px;
+    line-height: 135%;
+    letter-spacing: 1px;
+}
+
+#login_screen {
+    color: white;
+    padding-top: 20%;
+    padding-bottom: 25%;
+    padding-right: 30%;
+    padding-left: 30%;
+    line-height: 135%;
+    letter-spacing: 1px;
+}
+
+#login_screen .std_button {
+    background-color: #78143a;
+    color: white;
+    border-left: none;
+    border-bottom: 0;
+    border-top: none;
+    border-right: 0;
+    font-family: Montserrat, sans-serif;
+    font-size: 18px;
+    width: 100px;
+    height: 40px;
+    border-radius: 18px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+}
+
+#login_screen .std_button:hover {
+    background-color: midnightblue;
+}
+
+#basic_form {
+    color: white;
+    padding-top: 75px;
+    padding-left: 25px;
+    padding-right: 65px;
+    padding-bottom: 10px;
+    line-height: 135%;
+    letter-spacing: 1px;
+}
+
+#basic_form .std_button {
+    background-color: #78143a;
+    color: white;
+    font-family: Montserrat, sans-serif;
+    font-size: 18px;
+    width: 220px;
+    height: 40px;
+    border-radius: 18px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
 }

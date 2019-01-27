@@ -136,7 +136,8 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Google Places API
 
-PLACES_MAPS_API_KEY='AIzaSyCIuxyveCu5-tXxLehQhQ_nE6uEjA0BXDw'
-PLACES_MAP_WIDGET_HEIGHT=480
-PLACES_MAP_OPTIONS='{"center": { "lat": 38.971584, "lng": -95.235072 }, "zoom": 10}'
+PLACES_MAPS_API_KEY='AIzaSyBwCjT427Y3Aj9FHkQWBshteiz-0jAFEk4'
+PLACES_MAP_WIDGET_HEIGHT= 400
+PLACES_MAP_WIDGET_WIDTH = 200
+PLACES_MAP_OPTIONS='{"center": { "lat": 25.048000, "lng": 77.355400 }, "zoom": 10}'
 PLACES_MARKER_OPTIONS='{"draggable": true}'

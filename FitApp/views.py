@@ -190,6 +190,14 @@ def my_events (request):
     qs = request.user.member_profile.registrations_set
     return render(request, 'my_events.html', {'qs':qs})
 
+@login_required
+def member_create_event(request):
+    event_form = EventForm()
+    context = {
+        'event_form':event_form
+    }
+    return render(request, 'create_event.html', context)
+
 
 # Email functions
 def shoot_email(html_message, text_message, subject, recipient_list):

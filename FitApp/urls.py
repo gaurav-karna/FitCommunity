@@ -26,7 +26,8 @@ urlpatterns = [
 
 
     # path('portal/login/admin/create_event', views.admin_create_event, name='admin_create_event'), # admin create event
-    # path('portal/login/member/create_event', views.member_create_event, name='member_create_event'), # member create event
+
+    path('portal/login/member/create_event', views.member_create_event, name='member_create_event'), # member create event
     # emails sent to all people in community
 
     path('portal/login/member/my_events', views.my_events, name='my_events'),

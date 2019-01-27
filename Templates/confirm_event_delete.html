@@ -1,0 +1,40 @@
+{% extends 'home.html' %}
+
+{% block title %}
+<title>Admin Home | DeltaFit</title>
+{% endblock %}
+
+{% block content %}
+    {% load static %}
+
+    <div id="container">
+        <div id="navbar">
+            <ul>
+                <a style="width: 220px; background: url({% static 'deltafit_full.png' %})" href="{% url 'welcome_admin' %}">
+                    <input style="align-content: center; font-stretch: ultra-expanded; font-size: 40px" type="button" class="logo_button"/>
+                </a>
+                <li style="float: right;"><a href="{% url 'logout' %}">
+                    <input type="button" class="std_button" value="Logout"/>
+                </a></li>
+                <li style="float: right;"><a href="{% url 'all_events' %}">
+                    <input type="button" class="std_button" value="Events"/>
+                </a></li>
+                <li style="float: right;"><a href="{% url 'all_members' %}">
+                    <input type="button" class="std_button" value="Members"/>
+                </a></li>
+            </ul>
+        </div>
+
+        <div id="login_screen">
+            <h1 style="text-align: center;">Confirm Deletion of Event - {{ event.Title }}</h1>
+            <div id="thin_line"></div>
+            <a style="float:left;" href="{% url 'admin_delete' event.id %}">
+                    <input type="button" class="std_button" value="Confirm"/>
+            </a>
+            <a style="float: right;" href="{% url 'all_events' %}">
+                    <input type="button" class="std_button" value="Cancel"/>
+            </a>
+        </div>
+
+    </div>
+{% endblock %}

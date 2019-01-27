@@ -1,7 +1,7 @@
 {% extends 'home.html' %}
 
 {% block title %}
-    <title>New Member | DeltaFit</title>
+    <title>Logout | DeltaFit</title>
 {% endblock %}
 
 {% block content %}
@@ -31,21 +31,15 @@
             </ul>
         </div>
 
-        <div id="basic_form">
-            <h1 align="center">DeltaFit - New Member Signup Form</h1>
-            <h3 align="center">Please complete the fields below. </h3>
-            <h3 align="center" style="color: red;">{{ custom_message }}</h3>
-            <form method='POST'> {% csrf_token %}
-                {{ user_form.as_p }}
-                {{ m_form.as_p }}
-                <button type="submit" class="std_button">Submit</button>
-            </form>
+{#        extending login template to save time and code #}
+        <div id="login_screen">
+            <h1 align="center">Hope you come back soon!</h1>
+            <div id="thin_line"></div>
+            <a href="{% url 'index' %}">
+                <input type="button" class="std_button" value="Back to Home"/>
+            </a>
         </div>
+
     </div>
 
-
 {% endblock %}
-
-
-
-

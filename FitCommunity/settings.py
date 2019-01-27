@@ -55,6 +55,9 @@ ROOT_URLCONF = 'FitCommunity.urls'
 
 AUTH_USER_MODEL = 'FitApp.User'
 
+LOGIN_REDIRECT_URL = 'diverge'
+LOGOUT_REDIRECT_URL = 'logout_screen'
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -110,6 +113,15 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'fitcommunity2@gmail.com'
+EMAIL_HOST_PASSWORD = 'z0nt!3894hackm3!'
+EMAIL_FROM = 'fitcommunity2@gmail.com'
+DEFAULT_FROM_EMAIL = 'fitcommunity2@gmail.com'
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_TIMEOUT = 30
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.1/topics/i18n/

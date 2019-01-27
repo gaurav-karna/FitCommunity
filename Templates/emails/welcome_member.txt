@@ -1,0 +1,16 @@
+Hello, {{ user.first_name }}! Thank you for registering for DeltaFit!
+
+We are excited you are taking an active role in getting involved in your community. You must be approved by the
+committee admin before you can register for events.
+
+We hope that you enjoy our services, and look forward to your better future self!
+
+Sincerely,
+
+The Team at DeltaFit
+
+By - Abijith, Rushil, Maariz, and Gaurav
+     Created at DeltaHacks V
+     McMaster Uni, Jan. 2019
+
+GitHub - https://github.com/gaurav-karna/FitCommunity

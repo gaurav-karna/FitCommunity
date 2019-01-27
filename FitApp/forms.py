@@ -2,7 +2,7 @@ from django import forms
 # from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 # from django.db import transaction
 
-from .models import Event, CommunityAdmin, Community, User, Member
+from .models import Event, CommunityAdmin, Community, User, Member, Comments
 
 class UserForm(forms.ModelForm):
 
@@ -68,4 +68,24 @@ class CommunityForm (forms.ModelForm):
 
 class EventForm (forms.ModelForm):
     class Meta:
-        pass
+        model = Event
+        fields = [
+            'Title',
+            'Start_Date',
+            'End_Date',
+            'Category',
+            'Registration_Deadline',
+            'Short_Description',
+            'Location',
+            'Event_Picture',
+            'Max_Registration',
+            'Registration_Open',
+            'Event_Details'
+        ]
+
+class CommentsForm(forms.ModelForm):
+    class Meta:
+        model = Comments
+        fields = [
+            'Forum_Post'
+        ]

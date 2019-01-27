@@ -211,7 +211,7 @@ textarea {
     border-right: 0;
     font-family: Montserrat, sans-serif;
     font-size: 18px;
-    width: 100px;
+    width: 220px;
     height: 40px;
     border-radius: 18px;
     cursor: pointer;
@@ -244,4 +244,45 @@ textarea {
     cursor: pointer;
     text-align: center;
     text-decoration: none;
+}
+
+.tile_button {
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+    border-color: whitesmoke;
+    border-width: 3px;
+}
+
+.tile_button:hover {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border-color: whitesmoke;
+    border-width: 3px;
+}
+
+.table_button {
+    background-color: purple;
+    color: white;
+    border-left: none;
+    border-bottom: 0;
+    border-top: none;
+    border-right: 0;
+    font-family: Montserrat, sans-serif;
+    font-size: 18px;
+    width: 120px;
+    height: 20px;
+    border-radius: 18px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+}
+
+.table_button:hover {
+    background-color: mediumorchid;
+}
+
+#event_details {
+
 }

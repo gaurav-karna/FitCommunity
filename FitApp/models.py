@@ -55,6 +55,10 @@ class Event(models.Model):
     class Meta:
         verbose_name_plural = 'Events'
 
+    Created_At = models.DateTimeField(auto_now=False, auto_now_add=True, editable=False)
+
+    File_Path = models.CharField(max_length=256, default=user_directory_path)
+
     Title = models.CharField(max_length=32)
 
     Short_Description = models.TextField(max_length=500, verbose_name='Add a short (< 500 characters) description of your event')
@@ -67,7 +71,7 @@ class Event(models.Model):
 
     End_Date = models.DateTimeField()
 
-    Registration_Deadline = models.DateTimeField(verbose_name='Deadline for Regsitration', null=False)
+    Registration_Deadline = models.DateTimeField(verbose_name='Deadline for Registration', null=False)
 
     Max_Registration = models.SmallIntegerField(default=4, validators=[
         MinValueValidator(4, message='Minimum number of people per event is 4.'),
@@ -88,13 +92,15 @@ class Event(models.Model):
 
 # Comment box will be rendered at the bottom of each event page
 class Comments (models.Model):
-    Forum_Post = models.CharField(max_length=1024)
+    class Meta:
+        verbose_name_plural = 'Comments'
+    Forum_Post = models.CharField(max_length=1024, verbose_name='Something to say?')
     # created_at will be initialized when the comment is saved
     Created_At = models.DateTimeField(auto_now=False, auto_now_add=True, editable=False)
 
     # Foreign key to an Event (one event can have multiple comments, but one comment can only have one event)
     # This is on_delete, as there is no point maintaining comments if the event is deleted.
-    Related_Event = models.ForeignKey(Event, on_delete=models.CASCADE, null=False, verbose_name='Something to say?')
+    Related_Event = models.ForeignKey(Event, on_delete=models.CASCADE, null=False)
 
 ### AUXILIARY METHODS ###
 def check_registration(event):
@@ -105,7 +111,9 @@ def check_registration(event):
         return True
 
 class Community (models.Model):
-    Location = PlacesField()
+    class Meta:
+        verbose_name_plural = 'Communities'
+    Location = PlacesField(unique=True)
     # Access details of the location from commands on: https://github.com/oscarmcm/django-places
 
     Required_Email = models.CharField(max_length=64, unique=True, null=True, blank=True, verbose_name='Is there a specific email address you would'
@@ -114,7 +122,12 @@ class Community (models.Model):
     # Administrators would have a Foreign Key to this class, since there can be many admins to one community, but only
     # one community per admin
 
+    def __str__(self):
+        return str(self.id)
+
 class CommunityAdmin (models.Model):
+    class Meta:
+        verbose_name_plural = 'Community Administrators'
 
     user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='admin_profile')
 
@@ -125,6 +138,8 @@ class CommunityAdmin (models.Model):
     is_approved = models.BooleanField(default=False)
 
 class Member (models.Model):
+    class Meta:
+        verbose_name_plural = 'Members'
 
     user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='member_profile')
 
@@ -137,6 +152,8 @@ class Member (models.Model):
     ])
 
     Gender = models.CharField(max_length=16, choices=genders)
+
+    Community = models.ForeignKey(Community, on_delete=models.SET_NULL, null=True)
 
     Weight = models.SmallIntegerField(verbose_name='Please enter your weight in kilograms', default=70, validators= [
         MinValueValidator(12, message="Minimum weight must be 12 kg."),
@@ -166,6 +183,8 @@ class Member (models.Model):
     event_limit = 3
 
 class Registrations (models.Model):
+    class Meta:
+        verbose_name_plural = 'Registrations'
 
     ''' simply an intermediary model to connect members to events, but also allows for members to have multiple events
      - upon saving, decrease the event_limit by 1. '''

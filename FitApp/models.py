@@ -84,6 +84,8 @@ class Event(models.Model):
     # a button, a comment form will be rendered so that people can add to the discussion.
     # The view function will save the comment, and then refresh the same page (and the new comment will be added to the queryset)
 
+    ''' All registered guests available via registrations_set'''
+
 # Comment box will be rendered at the bottom of each event page
 class Comments (models.Model):
     Forum_Post = models.CharField(max_length=1024)
@@ -106,7 +108,7 @@ class Community (models.Model):
     Location = PlacesField()
     # Access details of the location from commands on: https://github.com/oscarmcm/django-places
 
-    Required_Email = models.CharField(max_length=64, unique=True, blank=True, verbose_name='Is there a specific email address you would'
+    Required_Email = models.CharField(max_length=64, unique=True, null=True, blank=True, verbose_name='Is there a specific email address you would'
                                                                                            'like your members to have?')
 
     # Administrators would have a Foreign Key to this class, since there can be many admins to one community, but only
@@ -121,7 +123,7 @@ class CommunityAdmin (models.Model):
 
 class Member (models.Model):
 
-    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='admin_profile')
+    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='member_profile')
 
     Bio = models.TextField(max_length=250, verbose_name='Biography: Please keep it under 250 characters',
                            default = "Hey, I am a member of FitCommunity", blank=False)
@@ -150,12 +152,8 @@ class Member (models.Model):
     Known_Conditions = models.TextField(max_length=300, verbose_name='Are there any conditions you would like us to know? '
                                                                      'Please keep it under 300 characters', default='Not Applicable')
 
-    # Displaying a member's events, orderize it by the date
-    Event_One = models.ForeignKey(Event, null=True, on_delete=models.SET_NULL)
-
-    Event_Two = models.ForeignKey(Event, null=True, on_delete=models.SET_NULL)
-
-    Event_Three = models.ForeignKey(Event, null=True, on_delete=models.SET_NULL)
+    # Displaying a member's events, is going to be accessed by a queryset:
+    ''' registrations_set '''
 
     ## Backend Attributes ##
 
@@ -163,6 +161,14 @@ class Member (models.Model):
     is_approved = models.BooleanField(default=False)
     # Max number of registered events is 3
     event_limit = 3
+
+class Registrations (models.Model):
+
+    ''' simply an intermediary model to connect members to events, but also allows for members to have multiple events
+     - upon saving, decrease the event_limit by 1. '''
+
+    Member = models.ForeignKey(Member, on_delete=models.CASCADE, verbose_name='Member', null=False)
+    Event = models.ForeignKey(Event, on_delete=models.CASCADE, verbose_name='Event', null=False)
 
 
 

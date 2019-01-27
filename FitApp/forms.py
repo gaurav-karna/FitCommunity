@@ -21,7 +21,6 @@ class UserForm(forms.ModelForm):
             'last_name',
             'email',
             'password',
-            # 'password_confirmation',
         ]
 
     def clean_email(self, *args, **kwargs):

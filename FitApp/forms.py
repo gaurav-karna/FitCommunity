@@ -2,9 +2,7 @@ from django import forms
 # from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 # from django.db import transaction
 
-from .models import Event, CommunityAdmin, Community, User
-
-
+from .models import Event, CommunityAdmin, Community, User, Member
 
 class UserForm(forms.ModelForm):
 
@@ -29,3 +27,33 @@ class UserForm(forms.ModelForm):
         if email_qs.exists():
             raise forms.ValidationError("This email already exists.")
         return email
+
+    def save(self, *args, **kwargs):
+        data = self.cleaned_data
+        user = User(username=data['email'], email=data['email'], first_name=data['first_name'],
+                    last_name=data['last_name'], password=data['password'], )
+        user.set_password(data['password'])
+        user.member_profile = None
+        user.admin_profile = None
+        user.save()
+        return user
+
+class MemberSignupForm(forms.ModelForm):
+    class Meta:
+        model = Member
+        fields = [
+            'Bio',
+            'Age',
+            'Gender',
+            'Weight',
+            'Height',
+            'Ethnicity',
+            'Known_Conditions'
+        ]
+
+class CommunityAdminForm(forms.ModelForm):
+    class Meta:
+        model = CommunityAdmin
+        fields = [
+            'Community'
+        ]

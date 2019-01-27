@@ -1,0 +1,50 @@
+#navbar {
+    position:fixed;
+    background-color: #78143a;
+    top:0;
+    left:0;
+    width: 100vw;
+    margin: 0 auto;
+    padding: 0px;
+    height:48px;
+    color: whitesmoke;
+}
+
+#navbar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #78143a;
+}
+
+#navbar li a {
+    float: left;
+    display: block;
+    text-align: center;
+    text-decoration: none;
+}
+
+#navbar a {
+    float: right;
+    display: block;
+    text-align: center;
+    text-decoration: none;
+}
+
+
+#navbar .std_button {
+    background-color: #78143a;
+    color: white;
+    font-family: Raleway, Arial, sans-serif;
+    font-size: 15px;
+    width: 120px;
+    height: 48px;
+    cursor: pointer;
+}
+
+#navbar .std_button:hover{
+    /*background-color: #606a70;*/
+    background-color: midnightblue;
+    color: white;
+}

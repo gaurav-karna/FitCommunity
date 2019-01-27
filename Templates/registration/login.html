@@ -1,0 +1,18 @@
+{% extends 'home.html' %}
+
+{% block title %}
+<title>Login | DeltaFit</title>
+{% endblock %}
+
+{% block content %}
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="std_button">Login</button>
+{#        <a href="/portal/password_reset">#}
+{#            <input type="button" class="std_button" value="Forgot Password?"/>#}
+{#        </a>#}
+    </form>
+
+{% endblock %}

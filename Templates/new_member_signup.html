@@ -1,0 +1,13 @@
+{% extends 'home.html' %}
+
+{% block title %}
+<title>New Member | DeltaFit</title>
+{% endblock %}
+<h1>New Member Signup</h1>
+{% block content %}
+    <form method='POST'> {% csrf_token %}
+        {{ user_form.as_p }}
+        {{ m_form.as_p }}
+        <button type="submit" class="std_button">Submit</button>
+    </form>
+{% endblock %}

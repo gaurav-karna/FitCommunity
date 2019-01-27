@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href={% static 'base.css' %}>
+    {% block title %}
+        <title>Home | DeltaFit</title>
+    {% endblock %}
+</head>
+
+<body>
+{% block content %}
+    <div id="container">
+        <div id="navbar">
+            <ul>
+                <li style="float:left;"><a href="{% url 'index' %}">
+                    <input type="button" class="std_button"/>
+                </a></li>
+                <li style="float: right;"><a href="{% url 'login' %}">
+                    <input type="button" class="std_button" value="Login"/>
+                </a></li>
+                <li style="float: right;"><a href="#contact">
+                    <input type="button" class="std_button" value="Contact Us"/>
+                </a></li>
+                <li style="float: right;"><a href="#team">
+                    <input type="button" class="std_button" value="Team"/>
+                </a></li>
+                <li style="float: right;"><a href="#signup">
+                    <input type="button" class="std_button" value="Signup"/>
+                </a></li>
+                <li style="float: right;"><a href="#about">
+                    <input type="button" class="std_button" value="About"/>
+                </a></li>
+            </ul>
+        </div>
+
+        
+    </div>
+{% endblock %}
+
+</body>
+</html>

@@ -30,6 +30,22 @@ categories = (
     ('Aerobics', 'Aerobics')
 )
 
+ethnicities = (
+    ('Caucasian', 'Caucasian'),
+    ('African-American', 'African-American'),
+    ('Asian', 'Asian'),
+    ('South Asian', 'South Asian'),
+    ('Latin-American', 'Latin-American'),
+    ('European', 'European'),
+    ('Middle-Eastern', 'Middle-Eastern'),
+)
+
+genders = (
+    ('Male', 'Male'),
+    ('Female', 'Female'),
+    ('Rather Not Say', 'Rather Not Say'),
+)
+
 ### Method to return path for image upload per user
 
 def user_directory_path(instance, filename):
@@ -86,6 +102,67 @@ def check_registration(event):
     else:
         return True
 
+class Community (models.Model):
+    Location = PlacesField()
+    # Access details of the location from commands on: https://github.com/oscarmcm/django-places
+
+    Required_Email = models.CharField(max_length=64, unique=True, blank=True, verbose_name='Is there a specific email address you would'
+                                                                                           'like your members to have?')
+
+    # Administrators would have a Foreign Key to this class, since there can be many admins to one community, but only
+    # one community per admin
+
+class CommunityAdmin (models.Model):
+
+    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='admin_profile')
+
+    # Form for editing community will be INACCESSIBLE to Admins, and only editable by the SuperAdmin
+    Community = models.ForeignKey(Community, on_delete=models.SET_NULL, null=True)
+
+class Member (models.Model):
+
+    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='admin_profile')
+
+    Bio = models.TextField(max_length=250, verbose_name='Biography: Please keep it under 250 characters',
+                           default = "Hey, I am a member of FitCommunity", blank=False)
+
+    Age = models.SmallIntegerField(default=12, validators=[
+        MinValueValidator(12, message="You have to be at least 12 years old to use FitCommunity."),
+        MaxValueValidator(120, message="You cannot use FitCommunity if you are over 120 years old.")
+    ])
+
+    Gender = models.CharField(max_length=16, choices=genders)
+
+    Weight = models.SmallIntegerField(verbose_name='Please enter your weight in kilograms', default=70, validators= [
+        MinValueValidator(12, message="Minimum weight must be 12 kg."),
+        MaxValueValidator(400, message="Maximum weight is 400 kg.")
+    ])
+
+    Height = models.SmallIntegerField(verbose_name='Please enter your height in centimeters', default=175, validators= [
+        MinValueValidator(100, message="Minimum height must be 100 cm"),
+        MaxValueValidator(300, message="Maximum height is 300 cm")
+    ])
+
+    BMI = models.SmallIntegerField(verbose_name='Body Mass Index')
+
+    Ethnicity = models.CharField(max_length=32, choices=ethnicities)
+
+    Known_Conditions = models.TextField(max_length=300, verbose_name='Are there any conditions you would like us to know? '
+                                                                     'Please keep it under 300 characters', default='Not Applicable')
+
+    # Displaying a member's events, orderize it by the date
+    Event_One = models.ForeignKey(Event, null=True, on_delete=models.SET_NULL)
+
+    Event_Two = models.ForeignKey(Event, null=True, on_delete=models.SET_NULL)
+
+    Event_Three = models.ForeignKey(Event, null=True, on_delete=models.SET_NULL)
+
+    ## Backend Attributes ##
+
+    # Community admin must approve the applicant
+    is_approved = models.BooleanField(default=False)
+    # Max number of registered events is 3
+    event_limit = 3
 
 
 

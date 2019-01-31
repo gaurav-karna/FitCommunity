@@ -8,6 +8,6 @@ Start-Up
 - Clone the repo, navigate to the root folder, and do (depending on your system) - python3 or python manage.py runserver
 - Navigate to localhost:8000 to get started
 
-Databse
+Database
 - runs on PostgreSQL 11.1
 - install and use the db credentials to test backend services
